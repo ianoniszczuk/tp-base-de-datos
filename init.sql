@@ -31,5 +31,6 @@ CREATE TABLE detalle_orden_pedido (
     cantidad INT NOT NULL,
     PRIMARY KEY (id_pedido, nro_item),
     FOREIGN KEY (id_pedido) REFERENCES orden_pedido(id),
-    FOREING KEY (id_product) REFERENCES producto(id)
+    FOREIGN KEY (id_product) REFERENCES producto(id)
 );
+
