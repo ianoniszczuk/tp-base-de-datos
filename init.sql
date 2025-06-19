@@ -14,13 +14,14 @@ CREATE TABLE producto (
     marca VARCHAR(50),
     categoria VARCHAR(50),
     precio DECIMAL(10, 2),
-    stock INT
+    stock INT 
 );
 
 CREATE TABLE orden_pedido (
     id INT PRIMARY KEY,
     id_proveedor INT,
     fecha DATE,
+    monto DECIMAL(10, 2),
     FOREIGN KEY (id_proveedor) REFERENCES proveedor(id)
 );
 
@@ -29,7 +30,10 @@ CREATE TABLE detalle_orden_pedido (
     nro_item INT,
     id_product INT,
     cantidad INT,
+    precio DECIMAL(10, 2),
+    monto DECIMAL(10, 2),
     PRIMARY KEY (id_pedido, nro_item),
     FOREIGN KEY (id_pedido) REFERENCES orden_pedido(id),
     FOREIGN KEY (id_product) REFERENCES producto(id)
 );
+
