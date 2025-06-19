@@ -14,6 +14,12 @@ CREATE SCHEMA public;
 -- 4. INSERTAR LOS DATOS DE PRUEBA
 
 \echo 'Insertando datos...'
+
 \i 'C:/Ian/ITBA/3er anio/tp-base-de-datos/insert_data.sql'
+
+-- 5. RECREAR LAS VISTAS
+
+\echo 'Creando vistas desde create_view.sql...'
+\i 'C:/Ian/ITBA/3er anio/tp-base-de-datos/create_view.sql'
 
 \echo '*** Proceso de reseteo completado. ***'
