@@ -12,13 +12,13 @@ SELECT
     SUM(dop.cantidad) AS "Total_cantidad",
     
     -- Calcular el promedio del monto de los detalles de la orden
-    AVG(dop.monto) AS "$_promedio"
+    CAST(AVG(dop.monto) AS NUMERIC(10, 2)) AS "$_promedio"
 FROM 
     orden_pedido op 
 JOIN 
     detalle_orden_pedido dop ON op.id = dop.id_pedido
 JOIN
-    producto p ON dop.id_product = p.id
+    producto p ON dop.id_producto = p.id
 WHERE 
     EXTRACT(YEAR FROM op.fecha) = (SELECT EXTRACT(YEAR FROM MAX(fecha)) FROM orden_pedido)
 GROUP BY

@@ -12,6 +12,6 @@ COPY orden_pedido (id, id_proveedor, fecha)
 FROM 'C:/Ian/ITBA/3er anio/bd-consigna-tp/orden_pedido.csv'
 DELIMITER ';' CSV HEADER;
 
-COPY detalle_orden_pedido (id_pedido, nro_item, id_product, cantidad)
+COPY detalle_orden_pedido(id_pedido, nro_item, id_producto, cantidad)
 FROM 'C:/Ian/ITBA/3er anio/bd-consigna-tp/detalle_orden_pedido.csv'
 DELIMITER ';' CSV HEADER;
