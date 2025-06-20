@@ -184,7 +184,15 @@ DECLARE
     v_orden_id INT;
     id_eliminar INT;
     stock_sacar INT;
+    v_max_year INT;
 BEGIN
+
+    SELECT MAX(EXTRACT(YEAR FROM fecha)) INTO v_max_year FROM orden_pedido;
+
+    IF EXTRACT(YEAR FROM TO_DATE(OLD."Mes" || '-01', 'YYYY-MM-DD')) < v_max_year THEN
+        RAISE EXCEPTION 'El anio (%) no puede ser anterior al anio mas reciente (%).', 
+                       EXTRACT( YEAR FROM TO_DATE(OLD."Mes" || '-01', 'YYYY-MM-DD')), v_max_year;
+    END IF;
 
     v_producto_id := (SELECT id FROM producto WHERE descripcion = 'No Asignado - ' || OLD."Categoria");
     
