@@ -185,7 +185,6 @@ DECLARE
     id_eliminar INT;
     stock_sacar INT;
 BEGIN
-    RAISE NOTICE 'Borrando órdenes para el mes % y categoría %', OLD."Mes", OLD."Categoria";
 
     v_producto_id := (SELECT id FROM producto WHERE descripcion = 'No Asignado - ' || OLD."Categoria");
     
