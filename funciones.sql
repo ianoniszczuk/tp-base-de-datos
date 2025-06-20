@@ -13,15 +13,15 @@ CREATE TABLE producto (
     descripcion VARCHAR(100),
     marca VARCHAR(50),
     categoria VARCHAR(50),
-    precio DECIMAL(10, 2),
-    stock INT 
+    precio DECIMAL(10, 2) CHECK (precio >= 0),
+    stock INT CHECK (stock >= 0)
 );
 
 CREATE TABLE orden_pedido (
     id INT PRIMARY KEY,
     id_proveedor INT,
     fecha DATE,
-    monto DECIMAL(10, 2),
+    monto DECIMAL(10, 2) CHECK (monto >= 0),
     FOREIGN KEY (id_proveedor) REFERENCES proveedor(id)
 );
 
@@ -29,9 +29,9 @@ CREATE TABLE detalle_orden_pedido(
     id_pedido INT,
     nro_item INT,
     id_producto INT,
-    cantidad INT,
-    precio DECIMAL(10, 2),
-    monto DECIMAL(10, 2),
+    cantidad INT CHECK (cantidad >= 0),
+    precio DECIMAL(10, 2) CHECK (precio >= 0),
+    monto DECIMAL(10, 2) CHECK (precio >= 0),
     PRIMARY KEY (id_pedido, nro_item),
     FOREIGN KEY (id_pedido) REFERENCES orden_pedido(id) ON DELETE CASCADE, 
     FOREIGN KEY (id_producto) REFERENCES producto(id)
