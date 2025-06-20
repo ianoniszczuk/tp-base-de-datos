@@ -33,7 +33,7 @@ CREATE TABLE detalle_orden_pedido(
     precio DECIMAL(10, 2),
     monto DECIMAL(10, 2),
     PRIMARY KEY (id_pedido, nro_item),
-    FOREIGN KEY (id_pedido) REFERENCES orden_pedido(id), 
+    FOREIGN KEY (id_pedido) REFERENCES orden_pedido(id) ON DELETE CASCADE, 
     FOREIGN KEY (id_producto) REFERENCES producto(id)
 );
 
